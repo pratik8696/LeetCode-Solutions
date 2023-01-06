@@ -301,11 +301,6 @@ public:
             m[t.second+1]--;
         }
         ll prev=0;
-        // dbg("START");
-        // for(auto &t:m)
-        // {
-        //     cout<<t.first<<" "<<t.second<<endl;
-        // }
         for(auto &t:m)
         {
             m[t.first]=t.second+prev;
@@ -313,21 +308,13 @@ public:
         }
         m[0]=0;
         m[INF]=0;
-        // dbg("PREV");
-        // for(auto &t:m)
-        // {
-        //     cout<<t.first<<" "<<t.second<<endl;
-        // }
-        // dbg("QUERIES");
         vector<int> ans;
         for(auto t:persons)
         {
             auto it=m.upper_bound(t);
             it--;
-            // cout<<(*it).first<<" "<<(*it).second<<endl;
             ans.pb((*it).second);
         }
-        // cout<<m.count(7)<<endl;
         return ans;
     }
 };
