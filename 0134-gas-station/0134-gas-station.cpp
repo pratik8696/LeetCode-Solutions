@@ -1,7 +1,7 @@
 deque<int> smaller;
 void add(int idx,vector<int> &pre)
 {
-    while(smaller.size()&&pre[idx]<=pre[smaller.front()])
+    while(smaller.size()&&pre[idx]<=pre[smaller.back()])
     {
         smaller.pop_back();
     }
