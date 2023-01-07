@@ -1,6 +1,30 @@
+deque<int> smaller;
+void add(int idx,vector<int> &pre)
+{
+    while(smaller.size()&&pre[idx]<=pre[smaller.front()])
+    {
+        smaller.pop_back();
+    }
+    smaller.push_back(idx);
+}
+
+void rem(int i)
+{
+    while(smaller.size()&&i>=smaller.front())
+    {
+        smaller.pop_front();
+    }
+}
+
+int get()
+{
+    return smaller.front();
+}
+
 class Solution {
 public:
     int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
+        smaller.clear();
         int n=gas.size();
         vector<int> pre;
         pre.push_back(0);
@@ -16,27 +40,26 @@ public:
         {
             pre[i]+=pre[i-1];
         }
-        multiset<int> s;
         int i=1;
         // create the window
         for(int j=1;j<n+1;j++)
         {
-            s.insert(pre[j]);
+            add(j,pre);
         }
         // check for conditions
-        if(*s.begin()-pre[i-1]>=0)
+        if(pre[get()]-pre[i-1]>=0)
         {
             return 0;
         }
         for(int j=n+1;j<2*n;j++)
         {
             // add
-            s.insert(pre[j]);
+            add(j,pre);
             // remove
-            s.erase(s.find(pre[i]));
+            rem(i);
             i++;
             // check for conditions
-            if(*s.begin()-pre[i-1]>=0)
+            if(pre[get()]-pre[i-1]>=0)
             {
                 return i-1;
             }                  
