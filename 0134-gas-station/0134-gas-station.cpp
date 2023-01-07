@@ -1,3 +1,7 @@
+#define fast_cin()                    \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL);                    \
+    cout.tie(NULL)
 deque<int> smaller;
 void add(int idx,vector<int> &pre)
 {
@@ -25,6 +29,7 @@ class Solution {
 public:
     int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
         smaller.clear();
+        fast_cin();
         int n=gas.size();
         vector<int> pre;
         pre.push_back(0);
