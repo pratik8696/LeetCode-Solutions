@@ -319,6 +319,7 @@ int dfs(int v, v64 &vis, uv64 &adj,string &s)
 class Solution {
 public:
     int longestPath(vector<int>& parent, string s) {
+        fast_cin();
         uv64 adj;
         ans=0;
         int n=parent.size();
