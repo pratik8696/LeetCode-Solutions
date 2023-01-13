@@ -290,7 +290,7 @@ int ans=0;
 int dfs(int v, v64 &vis, uv64 &adj,string &s)
 {
     vis[v] = 1;
-    v64 temp{0,0};
+    int max1=0,max2=0;
     for (auto child : adj[v])
     {
         if (vis[child] == 0)
@@ -298,13 +298,20 @@ int dfs(int v, v64 &vis, uv64 &adj,string &s)
             int curr=dfs(child, vis, adj,s);
             if(s[child]!=s[v])
             {
-                temp.pb(curr);
+                if(curr>max1)
+                {
+                    max2=max1;
+                    max1=curr;
+                }
+                else if(curr>max2)
+                {
+                    max2=curr;
+                }
             }
         }
     }
-    sort(all(temp));
-    int val1=temp[temp.size()-1]+temp[temp.size()-2]+1;
-    int val2=temp.back()+1;
+    int val1=max1+max2+1;
+    int val2=max(max1,max2)+1;
     ans=max({ans,val1,val2});
     return val2;
 }
