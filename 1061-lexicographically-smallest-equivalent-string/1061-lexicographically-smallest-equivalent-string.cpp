@@ -1,10 +1,10 @@
 typedef long long ll;
 typedef vector<ll> v64;
 #define pb push_back
-// #define fast_cin()                    \
-//     ios_base::sync_with_stdio(false); \
-//     cin.tie(NULL);                    \
-//     cout.tie(NULL)
+#define fast_cin()                    \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL);                    \
+    cout.tie(NULL)
 
 vector<char> sz;
 struct DSU
@@ -33,7 +33,7 @@ struct DSU
 class Solution {
 public:
     string smallestEquivalentString(string s1, string s2, string baseStr) {
-        // fast_cin();
+        fast_cin();
         vector<char> x;
         for(char a='a';a<='z';a++)
         {
