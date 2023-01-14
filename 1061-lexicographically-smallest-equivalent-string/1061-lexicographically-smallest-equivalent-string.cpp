@@ -312,11 +312,10 @@ struct DSU
 class Solution {
 public:
     string smallestEquivalentString(string s1, string s2, string baseStr) {
-        map<char,char> m;
+        fast_cin();
         vector<char> x;
         for(char a='a';a<='z';a++)
         {
-            m[a]=a;
             x.pb(a);
         }
         sz=x;
