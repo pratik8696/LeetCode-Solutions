@@ -4,56 +4,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-typedef unsigned long long ull;
-typedef long double ld;
-typedef pair<int, int> p32;
-typedef pair<ll, ll> p64;
-typedef pair<double, double> pdd;
 typedef vector<ll> v64;
-typedef vector<int> v32;
-typedef vector<vector<int>> vv32;
-typedef vector<vector<ll>> vv64;
-typedef vector<vector<p64>> vvp64;
-typedef vector<p64> vp64;
-typedef vector<p32> vp32;
-typedef vector<pair<p64, ll>> vpp64;
-typedef set<ll> s64;
-typedef set<p64> sp64;
-typedef multiset<ll> ms64;
-typedef multiset<p64> msp64;
-typedef map<ll, ll> m64;
-typedef map<ll, v64> mv64;
-typedef unordered_map<ll, v64> uv64;
-typedef unordered_map<ll, ll> u64;
-typedef unordered_map<p64, ll> up64;
-typedef unordered_map<ll, vp64> uvp64;
-typedef priority_queue<ll> pq64;
-typedef priority_queue<ll, v64, greater<ll>> pqs64;
-const int MOD = 1000000007;
-double eps = 1e-12;
-#define forn(i, n) for (ll i = 0; i < n; i++)
-#define forsn(i, s, e) for (ll i = s; i < e; i++)
-#define rforn(i, s) for (ll i = s; i >= 0; i--)
-#define rforsn(i, s, e) for (ll i = s; i >= e; i--)
-#define ln "\n"
-#define mp make_pair
-#define ie insert
 #define pb push_back
-#define fi first
-#define se second
-#define INF 2e18
 #define fast_cin()                    \
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL);                    \
     cout.tie(NULL)
-#define all(x) (x).begin(), (x).end()
-#define al(arr, n) arr, arr + n
-#define sz(x) ((ll)(x).size())
-#define dbg(a) cout << a << endl;
-#define dbg2(a) cout << a << ' ';
-using ld = long double;
-using db = double;
-using str = string;
 
 vector<char> sz;
 struct DSU
