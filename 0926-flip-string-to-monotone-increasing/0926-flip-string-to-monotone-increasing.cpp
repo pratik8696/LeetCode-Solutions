@@ -1,6 +1,12 @@
+#define fast_cin()                    \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL);                    \
+    cout.tie(NULL)
+
 class Solution {
 public:
     int minFlipsMonoIncr(string s) {
+        fast_cin();
         int n=s.length();
         vector<int> one(n),zero(n);
         for(int i=0;i<n;i++)
