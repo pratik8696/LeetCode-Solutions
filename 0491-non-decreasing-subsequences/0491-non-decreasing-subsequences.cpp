@@ -1,5 +1,5 @@
 set<vector<int>> ans;
-void sum(int idx,vector<int> &arr,vector<int> a)
+void sum(int idx,vector<int> &arr,vector<int> &a)
 {
     if(idx==arr.size())
     {
@@ -12,16 +12,16 @@ void sum(int idx,vector<int> &arr,vector<int> a)
     {
         if(arr[idx]>=a.back())
         {
-            vector<int> temp=a;
-            temp.push_back(arr[idx]);
-            sum(idx+1,arr,temp);
+            a.push_back(arr[idx]);
+            sum(idx+1,arr,a);
+            a.pop_back();
         }
     }
     else
     {
-        vector<int> temp=a;
-        temp.push_back(arr[idx]);
-        sum(idx+1,arr,temp);
+        a.push_back(arr[idx]);
+        sum(idx+1,arr,a);
+        a.pop_back();
     }
     
 }
