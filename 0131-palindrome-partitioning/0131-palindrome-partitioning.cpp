@@ -311,6 +311,7 @@ void sum(string &s, ll i, vector<string> &v)
 class Solution {
 public:
     vector<vector<string>> partition(string s) {
+        fast_cin();
         f.clear();
         vector<string> res;
         sum(s,0,res);
