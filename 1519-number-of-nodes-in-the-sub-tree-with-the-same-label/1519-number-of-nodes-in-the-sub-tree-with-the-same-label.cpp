@@ -1,4 +1,5 @@
 int hsh[(int)1e5+1][26];
+
 void dfs(int v,vector<int> &vis,unordered_map<int,vector<int>> &adj,string &s)
 {
     vis[v]=1;
