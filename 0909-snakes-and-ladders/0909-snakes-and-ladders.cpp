@@ -329,13 +329,13 @@ void bfs(uv64 &adj, vv64 &dist, ll src)
 class Solution {
 public:
     int snakesAndLadders(vector<vector<int>>& board) {
+        fast_cin();
         n=board.size();
         uv64 paths;
         for(int i=n-1;i>=0;i--)
         {
             for(int j=0;j<n;j++)
             {
-                // u
                 ll u;
                 ll k=n-i;
                 if(k%2)
@@ -346,16 +346,14 @@ public:
                 {
                     u=(k)*n-(j);
                 }
-                cout<<u<<" "<<board[i][j]<<endl;
                 if(board[i][j]!=-1)
                 {
                     paths[u].pb(board[i][j]);
                 }
             }
         }
-        vv64 dist(1000,v64(2,1e9));
+        vv64 dist(n*n+1,v64(2,1e9));
         bfs(paths,dist,1);
-        cout<<min(dist[n*n][0],dist[n*n][1])<<endl;
         ll val=min(dist[n*n][0],dist[n*n][1]);
         return (val==1e9?-1:val);
     }
