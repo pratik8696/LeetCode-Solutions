@@ -294,7 +294,7 @@ bool check(string &s,int i,int j)
 class Solution {
 public:
     bool checkPartitioning(string s) {
-        // fast_cin();
+        fast_cin();
         int n = s.length();
         memset(dp,-1,sizeof(dp));
         for (int i = 0; i < n-2; i++)
