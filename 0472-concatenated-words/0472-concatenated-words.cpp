@@ -1,3 +1,7 @@
+#define fast_cin()                    \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL);                    \
+    cout.tie(NULL)
 unordered_set<string> hsh;
 bool check(int idx,string &s,int count)
 {
@@ -23,6 +27,7 @@ bool check(int idx,string &s,int count)
 class Solution {
 public:
     vector<string> findAllConcatenatedWordsInADict(vector<string>& words) {
+        fast_cin();
         hsh.clear();
         for(auto t:words)
         {
