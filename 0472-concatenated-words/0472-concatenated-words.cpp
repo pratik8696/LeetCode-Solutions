@@ -2,8 +2,8 @@
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL);                    \
     cout.tie(NULL)
-
-bool check(int idx,string &s,int count,unordered_set<string> &hsh)
+unordered_set<string> hsh;
+bool check(int idx,string &s,int count)
 {
     if(idx==s.length())
     {
@@ -15,7 +15,7 @@ bool check(int idx,string &s,int count,unordered_set<string> &hsh)
         temp.push_back(s[i]);
         if(hsh.count(temp))
         {
-            if(check(i+1,s,count+1,hsh))
+            if(check(i+1,s,count+1))
             {
                 return true;
             }
@@ -28,7 +28,7 @@ class Solution {
 public:
     vector<string> findAllConcatenatedWordsInADict(vector<string>& words) {
         fast_cin();
-        unordered_set<string> hsh;
+        hsh.clear();
         for(auto t:words)
         {
             hsh.insert(t);
@@ -36,7 +36,7 @@ public:
         vector<string> ans;
         for(auto t:words)
         {
-            if(check(0,t,0,hsh))
+            if(check(0,t,0))
             {
                 ans.push_back(t);
             }
