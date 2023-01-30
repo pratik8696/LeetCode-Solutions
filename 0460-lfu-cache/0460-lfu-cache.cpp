@@ -1,7 +1,7 @@
 set<pair<pair<int,int>,int>> s;
-map<int,int> m;
-map<int,int> countt;
-map<int,int> used_last;
+unordered_map<int,int> m;
+unordered_map<int,int> countt;
+unordered_map<int,int> used_last;
 int cc;
 int val;
 
