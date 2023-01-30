@@ -1,3 +1,8 @@
+#define fast_cin()                    \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL);                    \
+    cout.tie(NULL)
+
 set<pair<pair<int,int>,int>> s;
 unordered_map<int,int> m;
 unordered_map<int,int> countt;
@@ -8,6 +13,7 @@ int val;
 class LFUCache {
 public:
     LFUCache(int capacity) {
+        fast_cin();
         val=capacity;
         m.clear();
         s.clear();
@@ -16,6 +22,7 @@ public:
     }
     
     int get(int key) {
+        fast_cin();
         // cout<<"Key le le mu mai "<<key<<endl;
         if(m.find(key)==m.end())
         {
@@ -44,6 +51,7 @@ public:
     
     void put(int key, int value) 
     {
+        fast_cin();
         // cout<<"VAL PAIR"<<endl;
         // cout<<key<<" "<<value<<endl;
         // cout<<s.size()<<endl;
