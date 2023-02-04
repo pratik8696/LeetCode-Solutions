@@ -1,8 +1,3 @@
-#define fast_cin()                    \
-    ios_base::sync_with_stdio(false); \
-    cin.tie(NULL);                    \
-    cout.tie(NULL)
-
 bool check(vector<int> &a,vector<int> &b)
 {
     for(int i=0;i<26;i++)
@@ -18,7 +13,6 @@ bool check(vector<int> &a,vector<int> &b)
 class Solution {
 public:
     bool checkInclusion(string s, string r) {
-        fast_cin();
         int n=s.length(),m=r.length();
         if(n>m)
         {
