@@ -1,7 +1,3 @@
-#define fast_cin()                    \
-    ios_base::sync_with_stdio(false); \
-    cin.tie(NULL);                    \
-    cout.tie(NULL)
 typedef long long ll;
 
 bool check(int val,vector<int> &a,vector<int> &b,int res)
@@ -33,7 +29,7 @@ ll value(ll sizer,vector<int> &a,vector<int> &b)
 class Solution {
 public:
     double findMedianSortedArrays(vector<int>& a, vector<int>& b) {
-        fast_cin();
+        // fast_cin();
         ll sizer=(a.size()+b.size());
         if(sizer%2)
         {
