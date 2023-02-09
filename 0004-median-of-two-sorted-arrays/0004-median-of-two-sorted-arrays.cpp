@@ -13,7 +13,7 @@ bool check(int val,vector<int> &a,vector<int> &b,int res)
 
 ll value(ll sizer,vector<int> &a,vector<int> &b)
 {
-    ll i=-2e9,j=2e9,ans=0;
+    ll i=-1e7,j=1e7,ans=0;
     while(i<=j)
     {
         ll mid=i+(j-i)/2;
@@ -33,6 +33,7 @@ ll value(ll sizer,vector<int> &a,vector<int> &b)
 class Solution {
 public:
     double findMedianSortedArrays(vector<int>& a, vector<int>& b) {
+        fast_cin();
         ll sizer=(a.size()+b.size());
         if(sizer%2)
         {
