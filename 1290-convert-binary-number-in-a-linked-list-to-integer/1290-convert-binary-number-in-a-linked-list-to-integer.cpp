@@ -10,22 +10,37 @@ ListNode* rev(ListNode* v)
     return temp;
 }
 
+ListNode* head;
+
+void reverse(ListNode* curr,ListNode* prev)
+{
+    if(curr==NULL)
+    {
+        head=prev;
+        return;
+    }
+    reverse(curr->next,curr);
+    curr->next=prev;
+}
+
+
+
 class Solution {
 public:
-    int getDecimalValue(ListNode* head) {
-        if(head==NULL)
-        {
-            return 0;
-        }
-        ListNode* v=rev(head);
+    int getDecimalValue(ListNode* x) {
+        head=x;
+        ListNode* prev=NULL;
+        reverse(x,prev);
+        ListNode* v=head;
         int ans=0,cc=0;
         while(v!=NULL)
         {
+            // cout<<v->val<<" ";
             ans+=pow(2,cc)*v->val;
-            // cout<<ans<<endl;
             v=v->next;
             cc++;
         }
+        // cout<<endl;
         return ans;
     }
 };
