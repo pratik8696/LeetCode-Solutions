@@ -57,17 +57,12 @@ class Solution {
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
         int n=lists.size();
-        N* head=NULL;
-        int i=0;
-        while(i < n && lists[i]==NULL)
-        {
-            i++;
-        }
-        if(i==n)
+        if(n==0)
         {
             return NULL;
         }
-        cout<<i<<endl;
+        N* head=NULL;
+        int i=0;
         head=lists[i];
         i++;
         for(;i<n;i++)
