@@ -18,11 +18,6 @@ vector<int> right(vector<int> &arr)
         }
         v.push_back(i);
     }
-    for(int i=0;i<n;i++)
-    {
-        cout<<ans[i]<<" ";
-    }
-    cout<<endl;
     return ans;
 }
 
@@ -46,11 +41,6 @@ vector<int> left(vector<int> &arr)
         }
         v.push_back(i);
     }
-    for(int i=0;i<n;i++)
-    {
-        cout<<ans[i]<<" ";
-    }
-    cout<<endl;
     return ans;
 }
 
