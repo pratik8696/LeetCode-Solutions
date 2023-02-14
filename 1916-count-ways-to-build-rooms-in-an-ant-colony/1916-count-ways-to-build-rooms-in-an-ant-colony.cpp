@@ -1,5 +1,5 @@
 typedef long long ll;
-const int N=1e6;
+const int N=1e5+1;
 const int MOD=1e9+7;
 ll fact[N];
 void initfact()
