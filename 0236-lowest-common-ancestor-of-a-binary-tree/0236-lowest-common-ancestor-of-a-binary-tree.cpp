@@ -12,7 +12,7 @@ public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
         if(root==NULL)
         {
-            return NULL;
+            return root;
         }
         if(root==p||root==q)
         {
@@ -24,11 +24,10 @@ public:
         {
             return root;
         }
-        if(left!=NULL&&right==NULL)
-        {
+        else if(left!=NULL){
             return left;
         }
-        if(right!=NULL&&left==NULL)
+        else
         {
             return right;
         }
