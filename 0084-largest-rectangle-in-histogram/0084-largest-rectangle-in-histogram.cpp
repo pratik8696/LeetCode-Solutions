@@ -54,8 +54,7 @@ public:
         int ans=0;
         for(int i=0;i<n;i++)
         {
-            int diff=abs(r[i]-l[i]);
-            diff--;
+            int diff=abs(r[i]-l[i])-1;
             ans=max(ans,diff*arr[i]);
         }
         return ans;
