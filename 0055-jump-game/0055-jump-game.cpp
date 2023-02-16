@@ -9,8 +9,12 @@ public:
             {
                 int reach=min(n-1,i+nums[i]);
                 maxx=max(maxx,reach);
+                if(maxx==n-1)
+                {
+                    return true;
+                }
             }
         }
-        return maxx==n-1;
+        return false;
     }
 };
