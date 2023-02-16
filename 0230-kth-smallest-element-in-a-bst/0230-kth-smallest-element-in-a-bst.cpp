@@ -4,17 +4,13 @@ int dfs(TreeNode* root,int &i,int k)
     {
         return -1;
     }
-    
-    if(root->left!=NULL)
+    int val=dfs(root->left,i,k);
+    if(val!=-1)
     {
-        int curr=dfs(root->left,i,k);
-        if(curr!=-1)
-        {
-            return curr;
-        }
+        return val;
     }
     i++;
-    if(i==k)
+    if(k==i)
     {
         return root->val;
     }
