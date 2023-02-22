@@ -118,9 +118,7 @@ ll sum(ll idx1,ll idx2,v32 &robot,vv32 &factory)
         return x;
     }
     ll ans=1e15;
-    // take 0
     ans=min(ans,sum(idx1,idx2+1,robot,factory));
-    // take 
     ll curr=0;
     for(int i=1,j=idx1;j<n;i++,j++)
     {
