@@ -34,6 +34,10 @@ public:
                 q.push({i,next[i]});
             }
         }
+        // for(int i=0;i<n;i++)
+        // {
+        //     cout<<"Index is "<<i<<" next is "<<next[i]<<" dist is "<<dist[i]<<endl;
+        // }
         return *max_element(begin(dist),end(dist));
     }
 };
