@@ -36,13 +36,11 @@ vector<int> merge(vector<int> &a,vector<int> &b)
     {
         if(a[i]>b[j])
         {
-            res.push_back(a[i]);
-            i++;
+            res.push_back(a[i++]);
         }
         else if(a[i]<b[j])
         {
-            res.push_back(b[j]);
-            j++;
+            res.push_back(b[j++]);
         }
         else if(a[i]==b[j])
         {
@@ -53,35 +51,29 @@ vector<int> merge(vector<int> &a,vector<int> &b)
             }
             if(i1==a.size())
             {
-                res.push_back(b[j]);
-                j++;
+                res.push_back(b[j++]);
             }
             else if(j1==b.size())
             {
-                res.push_back(a[i]);
-                i++;
+                res.push_back(a[i++]);
             }
             else if(a[i1]>b[j1])
             {
-                res.push_back(a[i]);
-                i++;
+                res.push_back(a[i++]);
             }
             else if(a[i1]<b[j1])
             {
-                res.push_back(b[j]);
-                j++;
+                res.push_back(b[j++]);
             }
         }
     }
     while(i<n)
     {
-        res.push_back(a[i]);
-        i++;
+        res.push_back(a[i++]);
     }
     while(j<m)
     {
-        res.push_back(b[j]);
-        j++;
+        res.push_back(b[j++]);
     }
     return res;
 }
@@ -95,7 +87,6 @@ public:
         {
             vector<int> f=r(a,a.size()-i);  // a.size()-i
             vector<int> s=r(b,b.size()-(k-i)); // b.size()-(k-i);
-            
             vector<int> v=merge(f,s);
             if(v.size()==k&&ans<v)
                 ans=v;
