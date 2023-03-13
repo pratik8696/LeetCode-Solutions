@@ -3,10 +3,6 @@ public:
     string removeKdigits(string s, int k) {
         deque<char> st;
         int len=s.length()-k;
-        if(len==0)
-        {
-            return "0";
-        }
         for(auto t:s)
         {
             while(st.size()&&int(st.back()-'0')>int(t-'0')&&k)
