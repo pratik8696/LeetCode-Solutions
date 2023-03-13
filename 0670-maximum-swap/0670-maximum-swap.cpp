@@ -2,21 +2,23 @@ class Solution {
 public:
     int maximumSwap(int num) {
         string s=to_string(num);
-        string ans=s;
-        for(int i=0;i<s.length();i++)
+        int n=s.length();
+        int max_dig=-1,last_pos_max=0;
+        int l=0,r=0;
+        for(int i=n-1;i>=0;i--)
         {
-            for(int j=i+1;j<s.length();j++)
+            if(max_dig<s[i]-'0')
             {
-                string res=s;
-                swap(res[i],res[j]);
-                if(res>ans)
-                {
-                    ans=res;
-                }
+                max_dig=s[i]-'0';
+                last_pos_max=i;
+            }
+            if(max_dig>s[i]-'0')
+            {
+                l=i;
+                r=last_pos_max;
             }
         }
-        cout<<ans<<endl;
-        return stoi(ans);
-        // return 0;
+        swap(s[r],s[l]);
+        return stoi(s);
     }
 };
