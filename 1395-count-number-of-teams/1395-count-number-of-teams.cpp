@@ -41,7 +41,7 @@ public:
         int a=0,b=0;
         a=sum(0,3,0,-1,arr);
         b=sum(0,3,1,-1,arr);
-        cout<<a<<" "<<b<<endl;
+        // cout<<a<<" "<<b<<endl;
         return a+b;
     }
 };
