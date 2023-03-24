@@ -1,36 +1,42 @@
+int a,b,x,cc=0;
+unordered_map<int,int> hsh;
+int dp[6001][2];
+
+int sum(int idx,int pre)
+{
+    if(idx==x)
+    {
+        return 0;
+    }
+    if(hsh[idx]>0||idx>6000||idx<0||pre>=2)
+    {
+        return 1e8;
+    }
+    auto &dimp=dp[idx][pre];
+    if(dimp!=-1)
+    {
+        return dimp;
+    }
+    int ans=1e8;
+    ans=min(ans,sum(idx+a,0)+1);
+    dimp=ans;
+    if(!pre&&idx-b>=0)
+        ans=min(ans,sum(idx-b,1)+1);
+    return dimp = ans;
+}
+
 class Solution {
 public:
-    unordered_map<int,int> mp;
-    int dp[6001][2];
-    
-    
-    int helper(int i, bool back , int a ,int b, int x) {
-        if(i == x)
-            return 0;
-        if(i<0 || i>6000 || mp.find(i)!=mp.end())
-            return 1e9;
-        if(dp[i][back] != -1) 
-            return dp[i][back];
-        
-        dp[i][back] = 1+helper(i+a,0,a,b,x); //go forward
-        
-        if(!back) //cannot go consecutively backwards more than 1
+    int minimumJumps(vector<int>& forbidden, int aa, int bb, int xx) {
+        hsh.clear();
+        cc=0;
+        for(auto t:forbidden)
         {
-        dp[i][back] = min(dp[i][back] , helper(i-b,1,a,b,x)+1);  
-        
+            hsh[t]++;
         }
-        return dp[i][back];
-    }
-    
-
-    int minimumJumps(vector<int>& forbidden, int a, int b, int x) {
-        for(int i=0;i<forbidden.size();i++){
-            mp[forbidden[i]] = 1;
-        }
+        a=aa,b=bb,x=xx;
         memset(dp,-1,sizeof(dp));
-        int ans = helper(0,0,a,b,x);
-        if(ans>1e9)
-               return -1;
-        return ans;               
+        int val = sum(0,0);
+        return (val>=1e8?-1:val);
     }
 };
