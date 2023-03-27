@@ -135,6 +135,7 @@ void sieve()
 class Solution {
 public:
     bool primeSubOperation(vector<int>& nums) {
+        fast_cin();
         sieve();
         ll n=sz(nums);
         ll prev=0;
