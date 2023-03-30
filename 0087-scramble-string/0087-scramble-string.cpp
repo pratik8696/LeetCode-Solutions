@@ -1,3 +1,6 @@
+string a,b;
+int dp[31][31][31][31];
+
 bool isvalid(vector<int> &a,vector<int> &b)
 {
     for(int i=0;i<26;i++)
@@ -9,23 +12,13 @@ bool isvalid(vector<int> &a,vector<int> &b)
     }
     return true;
 }
-string a,b;
-int dp[31][31][31][31];
+
 bool check(int i1,int j1,int i2,int j2)
 {
-    // cout<<"A is "<<a.substr(i1,j1-i1+1)<<" "<<i1<<" "<<j1<<endl;
-    // cout<<"B is "<<b.substr(i2,j2-i2+1)<<" "<<i2<<" "<<j2<<endl;
     if(i2==j2)
     {
         return (a[i1]==b[i2]);
     }
-    /*
-    great
-    01234
-    rgaet
-    01234
-    aetrg
-    */
     auto &x=dp[i1][j1][i2][j2];
     if(x!=-1)
     {
@@ -33,7 +26,7 @@ bool check(int i1,int j1,int i2,int j2)
     }
     int ans=0;
     vector<int> hsh1(26),hsh2(26);
-    // same side rkha jaye
+    // same side 
     for(int idx1=i1,idx2=i2;idx1<j1&idx2<j2;idx1++,idx2++)
     {
         hsh1[int(a[idx1]-'a')]++;
