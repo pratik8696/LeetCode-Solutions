@@ -1,5 +1,5 @@
 string a,b;
-int dp[31][31][31][31];
+int dp[50][50][50][50];
 
 bool isvalid(vector<int> &a,vector<int> &b)
 {
@@ -24,8 +24,8 @@ bool check(int i1,int j1,int i2,int j2)
     {
         return x;
     }
-    int ans=0;
     vector<int> hsh1(26),hsh2(26);
+    int ans=0;
     // same side 
     for(int idx1=i1,idx2=i2;idx1<j1&idx2<j2;idx1++,idx2++)
     {
