@@ -1,5 +1,5 @@
 string a,b;
-int dp[50][50][50][50];
+int dp[31][31][31][31];
 
 bool isvalid(vector<int> &a,vector<int> &b)
 {
