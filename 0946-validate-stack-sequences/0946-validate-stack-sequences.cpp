@@ -4,11 +4,6 @@ public:
         vector<int> res;
         int n=push.size();
         reverse(begin(pop),end(pop));
-        for(auto t:push)
-        {
-            cout<<t<<" ";
-        }
-        cout<<endl;
         for(int i=0;i<n;i++)
         {
             res.push_back(push[i]);
