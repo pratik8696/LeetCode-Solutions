@@ -1,7 +1,6 @@
 typedef long long ll;
 const int MOD=1e9+7;
-ll dp[1001][1001];
-ll sum(ll idx,ll rem,string &s,unordered_map<int,vector<int>> &arr)
+ll sum(ll idx,ll rem,string &s,unordered_map<int,vector<int>> &arr,vector<vector<ll>> &dp)
 {
     if(rem==s.length())
     {
@@ -17,11 +16,12 @@ ll sum(ll idx,ll rem,string &s,unordered_map<int,vector<int>> &arr)
         return x;
     }
     ll ans=0;
-    ans+=sum(idx+1,rem,s,arr);
-    ans+=sum(idx+1,rem+1,s,arr)*arr[idx][int(s[rem]-'a')];
+    ans+=sum(idx+1,rem,s,arr,dp);
+    ans+=sum(idx+1,rem+1,s,arr,dp)*arr[idx][int(s[rem]-'a')];
     ans%=MOD;
     return x = ans;
 }
+
 class Solution {
 public:
     int numWays(vector<string>& s, string r) {
@@ -38,7 +38,7 @@ public:
                 arr[j][int(s[i][j]-'a')]++;
             }
         }
-        memset(dp,-1,sizeof(dp));
-        return sum(0,0,r,arr);
+        vector<vector<ll>> dp(m+1,vector<ll>(r.length()+1,-1));
+        return sum(0,0,r,arr,dp);
     }
 };
