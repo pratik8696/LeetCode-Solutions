@@ -52,7 +52,7 @@ typedef unordered_map<p64, ll> up64;
 typedef unordered_map<ll, vp64> uvp64;
 typedef priority_queue<ll> pq64;
 typedef priority_queue<ll, v64, greater<ll>> pqs64;
-const int MOD = 1000000007;
+const int MOD = 998244353;
 double eps = 1e-12;
 #define forn(i, n) for (ll i = 0; i < n; i++)
 #define forsn(i, s, e) for (ll i = s; i < e; i++)
@@ -285,17 +285,30 @@ bool isPrime(int x)
     return true;
 }
 
+
 struct DSU
 {
     v64 e, sz;
     DSU(ll n)
     {
-        e.assign(n + 1, -1);
-        sz.assign(n + 1, 1);
+        e.assign(n, -1);
+        sz.assign(n, 1);
     }
     bool same(ll a, ll b) { return find(a) == find(b); }
     ll size(ll x) { return sz[find(x)]; }
     ll find(ll x) { return e[x] < 0 ? x : e[x] = find(e[x]); }
+    ll g()
+    {
+        int cc=0;
+        for(int i=0;i<e.size();i++)
+        {
+            if(e[i]==-1)
+            {
+                cc++;
+            }
+        }
+        return cc;
+    }
     void join(ll a, ll b)
     {
         a = find(a);
@@ -315,54 +328,40 @@ struct DSU
 
 bool check(string &a,string &b)
 {
-    vector<char> x,y;
+    set<char> x,y;
     for(int i=0;i<a.length();i++)
     {
         if(a[i]!=b[i])
         {
-            x.push_back(a[i]);
-            y.push_back(b[i]);
+            x.insert(a[i]);
+            y.insert(b[i]);
         }
-    }
-    if(x.size()==2)
-    {
-        if(x[0]==y.back()&&y[0]==x.back())
+        if(x.size()>2)
         {
-            return true;
+            return false;
         }
     }
-    if(x.size()==0)
+    if(x==y&&x.size()<=2)
     {
         return true;
     }
     return false;
 }
 
-void create(vector<string> &s,DSU &d)
-{
-    for(int i=0;i<s.size();i++)
-    {
-        for(int j=i+1;j<s.size();j++)
-        {   
-            if(check(s[i],s[j]))
-            {
-                d.join(i,j);
-            }
-        }
-    }
-}
-
 class Solution {
 public:
     int numSimilarGroups(vector<string>& s) {
-        fast_cin();
-        unordered_map<int,int> m;
         DSU d(s.size());
-        create(s,d);
         for(int i=0;i<s.size();i++)
         {
-            m[(d.find(i))]++;
+            for(int j=i+1;j<s.size();j++)
+            {
+                if(d.same(i,j)==false&&check(s[i],s[j]))
+                {
+                    d.join(i,j);
+                }
+            }
         }
-        return (int)m.size();
+        return d.g();
     }
 };
