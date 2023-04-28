@@ -328,19 +328,20 @@ struct DSU
 
 bool check(string &a,string &b)
 {
-    set<char> x,y;
+    vector<char> x,y;
     for(int i=0;i<a.length();i++)
     {
         if(a[i]!=b[i])
         {
-            x.insert(a[i]);
-            y.insert(b[i]);
+            x.push_back(a[i]);
+            y.push_back(b[i]);
         }
         if(x.size()>2)
         {
             return false;
         }
     }
+    reverse(x.begin(),x.end());
     if(x==y&&x.size()<=2)
     {
         return true;
