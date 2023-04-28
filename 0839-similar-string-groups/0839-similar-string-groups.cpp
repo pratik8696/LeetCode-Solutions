@@ -353,6 +353,7 @@ class Solution {
 public:
     int numSimilarGroups(vector<string>& s) {
         DSU d(s.size());
+        fast_cin();
         for(int i=0;i<s.size();i++)
         {
             for(int j=i+1;j<s.size();j++)
