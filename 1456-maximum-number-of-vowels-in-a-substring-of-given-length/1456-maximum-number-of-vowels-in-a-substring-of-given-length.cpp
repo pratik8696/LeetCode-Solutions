@@ -1,29 +1,29 @@
 class Solution {
 public:
-    int check(unordered_map<char,int> &m)
+    int check(vector<int> &m)
     {
         int cc=0;
-        cc+=m['a'];
-        cc+=m['e'];
-        cc+=m['i'];
-        cc+=m['o'];
-        cc+=m['u'];
+        cc+=m['a'-'a'];
+        cc+=m['e'-'a'];
+        cc+=m['i'-'a'];
+        cc+=m['o'-'a'];
+        cc+=m['u'-'a'];
         return cc;
     }
     
     int maxVowels(string s, int k) {
-        unordered_map<char,int> m;
+        vector<int> m(26);
         int n=s.length();
         for(int i=0;i<k;i++)
         {
-            m[s[i]]++;
+            m[int(s[i]-'a')]++;
         }
         int ans=check(m);
         int i=0;
         for(int j=k;j<n;j++)
         {
-            m[s[i++]]--;
-            m[s[j]]++;
+            m[int(s[i++]-'a')]--;
+            m[int(s[j]-'a')]++;
             ans=max(ans,check(m));
         }
         return ans;
