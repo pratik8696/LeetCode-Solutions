@@ -192,7 +192,6 @@ public:
             {
                 cc++;
                 hsh[t]=cc;
-                // cout<<t<<" "<<cc<<endl;
             }
         }
         int arr[int(cc+1)];
@@ -203,22 +202,16 @@ public:
         forn(i,sz(obstacles))
         {
             obstacles[i]=hsh[obstacles[i]];
-            // cout<<obstacles[i]<<" ";
         }
-        // cout<<endl;
         map<int,int> m;
         v32 ans;
         for(auto t:obstacles)
         {
-            // largest no uske piche ka
             ll q=query(arr,tree,0,cc+1-1,1,0,t);
             ll past=1+q;
-            // update the value of t
-            // cout<<past<<" ";
             ans.push_back(past);
             update(arr,tree,0,cc+1-1,1,t,past);
         }
-        // cout<<endl;
         return ans;
     }
 };
