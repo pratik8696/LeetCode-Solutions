@@ -182,6 +182,7 @@ void update(int arr[], int tree[], int s, int e, int tn, int idx, int val)
 class Solution {
 public:
     vector<int> longestObstacleCourseAtEachPosition(vector<int>& obstacles) {
+        fast_cin();
         v32 res=obstacles;
         sort(all(res));
         map<int,int> hsh;
