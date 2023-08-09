@@ -1,33 +1,35 @@
-typedef long long ll;
+bool check(int val,vector<int> &arr,int p)
+{
+    int c=0;
+    for(int i=0;i<arr.size()-1;i++)
+    {
+        if(arr[i+1]-arr[i]<=val)
+        {
+            c++;
+            i++;
+        }
+    }
+    return c>=p;
+}
 
 class Solution {
 public:
-     bool f(ll m,vector<int>& nums , int p)
-     {
-         int c=0;
-         for(int i=0;i<nums.size()-1;i++)
-         {
-              if(nums[i+1]-nums[i]<=m)
-              {
-                  c++;
-                  i++;
-              }
-         }
-         return c>=p;
-     }
     int minimizeMax(vector<int>& nums, int p) {
-     ll l =0,h=1e18 ,ans=0;
+        int n=nums.size();
         sort(begin(nums),end(nums));
-        while(l<=h)
+        int i=0,j=1e9,ans=0;
+        while(i<=j)
         {
-            ll m = (l+h)/2;
-            if(f(m,nums,p))
+            int mid=(i+j)/2;
+            if(check(mid,nums,p))
             {
-                ans = m;
-                h = m-1;     
+                j=mid-1;
+                ans=mid;
             }
             else
-                l= m+1;
+            {
+                i=mid+1;
+            }
         }
         return ans;
     }
