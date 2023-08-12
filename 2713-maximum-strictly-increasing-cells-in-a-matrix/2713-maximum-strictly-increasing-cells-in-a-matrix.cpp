@@ -10,12 +10,13 @@ int sum(int x,int y,vector<vector<int>> &h,vector<vector<int>> &v,vector<vector<
     xx=0;
     // horizontally
     int idx1=h[x][y];
+    int ans=0;
     if(idx1!=-1)
     {
         // iterate all the values which equal arr[x][idx1] in the same column
         for(auto t:row[x][arr[x][idx1]])
         {
-            xx=max(xx,1+sum(x,t,h,v,dp,row,col,arr));
+            ans=max(ans,1+sum(x,t,h,v,dp,row,col,arr));
         }
     }
     // vertically
@@ -25,10 +26,10 @@ int sum(int x,int y,vector<vector<int>> &h,vector<vector<int>> &v,vector<vector<
         // iterate all the values which equal arr[idx2][y] in the same row
         for(auto t:col[y][arr[idx2][y]])
         {
-            xx=max(xx,1+sum(t,y,h,v,dp,row,col,arr));
+            ans=max(ans,1+sum(t,y,h,v,dp,row,col,arr));
         }
     }
-    return xx;
+    return xx=ans;
 }
 
 class Solution {
