@@ -1,37 +1,25 @@
-bool check(int val,unordered_map<int,vector<int>> &adj,int k)
+int check(unordered_map<int,vector<int>> &adj,int k)
 {
+    int ans=1;
     for(auto t:adj)
     {
         auto &v=t.second;
-        // cout<<t.first<<": ";
-        if(v.size()>=val)
+        int sum=0;
+        int i=0;
+        for(int j=0;j<v.size();j++)
         {
-            int sum=0;
-            for(int i=0;i<val;i++)
+            sum+=v[j];
+            while(sum>k)
             {
-                sum+=v[i];
-            }   
-            // cout<<sum<<", ";
+                sum-=v[i++];
+            }
             if(sum<=k)
             {
-                return true;
-            }
-            int i=0;
-            for(int j=val;j<v.size();j++)
-            {
-                
-                sum+=v[j];
-                sum-=v[i++];
-                // cout<<sum<<", ";
-                if(sum<=k)
-                {
-                    return true;
-                }
+                ans=max(ans,j-i+2);
             }
         }
-        // cout<<endl;
     }
-    return false;
+    return ans;
 }
 
 
@@ -53,21 +41,6 @@ public:
             }
             t.second=curr;
         }
-        int i=2,j=nums.size(),ans=1;
-        // cout<<check(1,adj,k)<<endl;
-        while(i<=j)
-        {
-            int mid=(i+j)/2;
-            if(check(mid-1,adj,k))
-            {
-                i=mid+1;
-                ans=mid;
-            }
-            else
-            {
-                j=mid-1;
-            }
-        }
-        return ans;
+        return check(adj,k);
     }
 };
