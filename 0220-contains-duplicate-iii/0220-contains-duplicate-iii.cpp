@@ -8,6 +8,7 @@ public:
         int j=0;
         for(int i=0;i<n;i++)
         {
+            // deletion
             if(s.size()>=indexDiff+1)
             {
                 auto it1=s.find(nums[j]);
@@ -28,6 +29,7 @@ public:
                 s.erase(s.find(nums[j]));
                 j++;
             }
+            // insertion
             auto it=s.lower_bound(nums[i]);
             if(s.size()==0)
             {
@@ -51,6 +53,7 @@ public:
                 diff=min(diff,abs(back-nums[i]));
                 s.insert(nums[i]);
             }
+            // checking
             if(diff<=valueDiff)
             {
                 return true;
