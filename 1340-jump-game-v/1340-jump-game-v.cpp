@@ -25,9 +25,6 @@ int sum(int idx,int d,vector<int> &arr)
         }
         ans=max(sum(i,d,arr)+1,ans);
     }
-    // conditions for jump
-    // arr[i] > arr[j]
-    // arr[i] > arr[k] for all indices between i and k
     return x=ans;
 }
 class Solution {
@@ -39,7 +36,6 @@ public:
         {
             int curr=sum(i,d,arr)+1;
             ans=max(ans,curr);
-            // cout<<curr<<" ";
         }
         return ans;
     }
