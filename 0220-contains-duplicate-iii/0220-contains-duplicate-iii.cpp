@@ -8,12 +8,6 @@ public:
         int j=0;
         for(int i=0;i<n;i++)
         {
-            // cout<<"BEFORE REMOVE"<<endl;
-            // for(auto t:s)
-            // {
-            //     cout<<t<<" ";
-            // }
-            // cout<<endl;
             if(s.size()>=indexDiff+1)
             {
                 auto it1=s.find(nums[j]);
@@ -34,12 +28,6 @@ public:
                 s.erase(s.find(nums[j]));
                 j++;
             }
-            // cout<<"AFTER REMOVE"<<endl;
-            // for(auto t:s)
-            // {
-            //     cout<<t<<" ";
-            // }
-            // cout<<endl;
             auto it=s.lower_bound(nums[i]);
             if(s.size()==0)
             {
@@ -63,14 +51,6 @@ public:
                 diff=min(diff,abs(back-nums[i]));
                 s.insert(nums[i]);
             }
-            
-            // cout<<"AFTER INSERT"<<endl;
-            // for(auto t:s)
-            // {
-            //     cout<<t<<" ";
-            // }
-            // cout<<endl;
-            // cout<<"CURRENT DIFF IS "<<diff<<endl;
             if(diff<=valueDiff)
             {
                 return true;
