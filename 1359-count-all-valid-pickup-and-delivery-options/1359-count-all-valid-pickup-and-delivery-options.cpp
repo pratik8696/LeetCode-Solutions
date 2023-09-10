@@ -12,14 +12,14 @@ ll sum(ll rem_start,ll rem_end)
     {
         return x;
     }
-    x=0;
+    ll ans=0;
     if(rem_start>0)
-        x+=rem_start*sum(rem_start-1,rem_end+1);
-    x%=MOD;
+        ans+=rem_start*sum(rem_start-1,rem_end+1);
+    ans%=MOD;
     if(rem_end>0)
-        x+=rem_end*sum(rem_start,rem_end-1);
-    x%=MOD;
-    return x;
+        ans+=rem_end*sum(rem_start,rem_end-1);
+    ans%=MOD;
+    return x=ans;
 }
 
 class Solution {
