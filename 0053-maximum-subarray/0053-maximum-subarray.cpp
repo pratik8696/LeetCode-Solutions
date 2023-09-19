@@ -3,10 +3,10 @@ class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
         ll curr=0,maxx=-1e9;
-        for(ll t:nums)
+        for(auto t:nums)
         {
-            curr=max(curr+t,t);
-            maxx=max(curr,maxx);
+            curr=max(curr+t,ll(t));
+            maxx=max(maxx,curr);
         }
         return maxx;
     }
