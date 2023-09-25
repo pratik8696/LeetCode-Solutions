@@ -8,10 +8,8 @@ class Solution {
   public:
     vector<int> maxCombinations(int n, int k, vector<int> &b, vector<int> &a) {
         multiset<int> pq;
-        sort(begin(a),end(a));
-        sort(begin(b),end(b));
-        reverse(begin(b),end(b));
-        reverse(begin(a),end(a));
+        sort(begin(a),end(a),greater<int>());
+        sort(begin(b),end(b),greater<int>());
         for(int i=0;i<n;i++)
         {
             for(int j=0;j<n;j++)
