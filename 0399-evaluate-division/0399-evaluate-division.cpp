@@ -34,14 +34,10 @@ public:
         {
             string a=t[0];
             string b=t[1];
-            if(s.count(a)&&s.count(b))
-            {
-                // continue
-            }
-            else
+            if(!(s.count(a)&&s.count(b)))
             {
                 ans.push_back(-1);
-                continue;
+                continue;                
             }
             map<string,double> dist;
             map<string,int> vis;
@@ -50,19 +46,12 @@ public:
                 dist[t]=1;
             }
             dfs(a,vis,adj,dist);
-            // for(auto t:dist)
-            // {
-            //     cout<<t.first<<" "<<t.second<<endl;
-            // }
-            // cout<<endl;
             if(vis[b]==0)
             {
-                // cout<<-1<<endl;
                 ans.push_back(-1);
             }
             else
             {
-                // cout<<dist[b]<<endl;
                 ans.push_back(dist[b]);
             }
         }
