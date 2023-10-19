@@ -1,31 +1,91 @@
 class Solution {
 public:
     bool backspaceCompare(string s, string t) {
-        vector<char> st,pt;
-        for(auto t:s)
+        int skip_s=0;
+        int skip_tt=0;
+        int i=s.length()-1,j=t.length()-1;
+        while(i>=0&&j>=0)
         {
-            if(t=='#')
+            if(s[i]=='#')
             {
-                if(st.size())
-                st.pop_back();
+                skip_s++;
+                i--;
+            }
+            else if(t[j]=='#')
+            {
+                skip_tt++;
+                j--;
             }
             else
             {
-                st.push_back(t);
+                if(skip_s==0&&skip_tt==0)
+                {
+                    if(s[i]==t[j])
+                    {
+                        // good 
+                        i--,j--;
+                    }
+                    else
+                    {
+                        // cout<<"MERA 1"<<endl;
+                        return false;
+                    }
+                }
+                else if(skip_s)
+                {
+                    skip_s--;
+                    i--;
+                }
+                else if(skip_tt)
+                {
+                    skip_tt--;
+                    j--;
+                }
             }
         }
-        for(auto x:t)
+        cout<<i<<" "<<j<<endl;
+        while(i>=0)
         {
-            if(x=='#')
+            if(s[i]=='#')
             {
-                if(pt.size())
-                pt.pop_back();
+                skip_s++;
+                i--;
             }
             else
             {
-                pt.push_back(x);
+                if(skip_s==0)
+                {
+                    // cout<<"MERA 2"<<endl;
+                    return false;
+                }
+                else
+                {
+                    skip_s--;
+                    i--;
+                }
             }
         }
-        return st==pt;
+        while(j>=0)
+        {
+            if(t[j]=='#')
+            {
+                skip_tt++;
+                j--;
+            }
+            else
+            {
+                if(skip_tt==0)
+                {
+                    // cout<<"MERA 3"<<endl;
+                    return false;
+                }
+                else
+                {
+                    skip_tt--;
+                    j--;
+                }
+            }
+        }
+        return true;
     }
 };
