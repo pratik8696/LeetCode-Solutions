@@ -1,19 +1,21 @@
-map<int,int> m;
+vector<int> m;
 
 void dfs(TreeNode* root,int height)
 {
-    if(m.count(height)==0)
+    if(m.size()<height)
     {
-        m[height]=root->val;
+        m.push_back(root->val);
     }
     else
     {
-        m[height]=max(m[height],root->val);
+        m[height-1]=max(m[height-1],root->val);
     }
+    
     if(root->left!=NULL)
     {
         dfs(root->left,height+1);
     }
+    
     if(root->right!=NULL)
     {
         dfs(root->right,height+1);
@@ -29,12 +31,7 @@ public:
             return {};
         }
         m.clear();
-        dfs(root,0);
-        vector<int> ans;
-        for(auto t:m)
-        {
-            ans.push_back(t.second);
-        }
-        return ans;
+        dfs(root,1);
+        return m;
     }
 };
