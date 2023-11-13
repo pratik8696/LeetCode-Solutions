@@ -2,12 +2,16 @@ typedef long long ll;
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
-        ll curr=0,maxx=-1e9;
-        for(auto t:nums)
+        for(int i=0;i<nums.size();i++)
         {
-            curr=max(curr+t,ll(t));
-            maxx=max(maxx,curr);
+            nums[i]+=(i-1>=0?nums[i-1]:0);
         }
-        return maxx;
+        int ans=nums[0],mini=0;
+        for(int i=0;i<nums.size();i++)
+        {
+            ans=max(nums[i]-mini,ans);
+            mini=min(mini,nums[i]);
+        }
+        return ans;
     }
 };
