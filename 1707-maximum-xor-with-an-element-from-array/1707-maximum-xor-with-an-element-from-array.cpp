@@ -33,7 +33,6 @@ void insert_node(ll x)
         {
             curr->zero=min(curr->zero,x);
         }
-        // cout<<i<<" "<<curr->one<<" "<<curr->zero<<" "<<temp<<endl;
         curr = curr->nxt[temp];
     }
 }
@@ -48,7 +47,6 @@ int helper(ll x,ll m)
         int temp=(x >> i) & 1;
         ll o=curr->one;
         ll z=curr->zero;
-        // cout<<ans<<" "<<i<<" "<<o<<" "<<z<<endl;
         if(curr->nxt[1-temp]!=NULL)
         {
             if(temp)
@@ -56,16 +54,12 @@ int helper(ll x,ll m)
                 if(z<=m)
                 {
                     ans+=(1<<i);
-                    // cout<<"MOVED TO ZERO"<<endl;
-                    // move to zero
                     curr=curr->nxt[1-temp];
                 }
                 else
                 {
-                    // move to one
                     if(o<=m)
                     {
-                        // cout<<"ZERO MILA MGR BDA HAI TO ONE MAI JA RHE"<<endl;
                         curr=curr->nxt[temp];
                     }
                     else
@@ -76,20 +70,15 @@ int helper(ll x,ll m)
             }
             else
             {
-                // move to one
                 if(o<=m)
                 {
                     ans+=(1<<i);
-                    // cout<<"MOVED TO ONE"<<endl;
-                    // move in one
                     curr=curr->nxt[1-temp];
                 }
                 else
                 {
-                    //move to zero
                     if(z<=m)
                     {
-                        // cout<<"ONE MILA MGR BDA HAI TO ZERO MAI JA RHE"<<endl;
                         curr=curr->nxt[temp];
                     }
                     else
@@ -101,8 +90,6 @@ int helper(ll x,ll m)
         }
         else
         {
-            // cout<<"MERA OPP HI NAI HAI"<<endl;
-            // move to temp only 
             if(temp)
             {
                 if(o<=m)
