@@ -7,7 +7,8 @@ public:
         {
             b[int(t-'a')]++;
         }
-        unordered_set<string> ans;
+        int dp[26][26][26];
+        memset(dp,0,sizeof(dp));
         for(int i=0;i<s.length();i++)
         {
             b[int(s[i]-'a')]--;
@@ -17,15 +18,22 @@ public:
                 if(b[j]&&f[j])
                 {
                     string curr="";
-                    curr.push_back(char('a'+j));
-                    curr.push_back(s[i]);
-                    curr.push_back(char('a'+j));
-                    // cout<<curr<<endl;
-                    ans.insert(curr);
+                    dp[j][int(s[i]-'a')][j]=1;
                 }
             }
         }
         // bbb bcb bab aba
-        return ans.size();
+        int res=0;
+        for(int i=0;i<26;i++)
+        {
+            for(int j=0;j<26;j++)
+            {
+                for(int k=0;k<26;k++)
+                {
+                    res+=dp[i][j][k];
+                }
+            }
+        }
+        return res;
     }
 };
