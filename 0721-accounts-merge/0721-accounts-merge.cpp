@@ -145,54 +145,55 @@ struct DSU
 class Solution {
 public:
     vector<vector<string>> accountsMerge(vector<vector<string>>& accounts) {
-        map<string,string> link;
-        map<string,int> sti;
-        map<int,string> its;
+        map<string,int> m;
+        map<int,string> dm;
+        map<int,int> parents;
         int cc=0;
-        for(auto t:accounts)
+        for(int j=0;j<accounts.size();j++)
         {
-            auto &x=t;
-            for(int i=1;i<x.size();i++)
+            vector<string> s=accounts[j];
+            for(int i=1;i<s.size();i++)
             {
-                link[x[i]]=x[0];
-                if(sti.count(x[i])==0)
+                if(m.count(s[i])==0)
                 {
                     cc++;
-                    sti[x[i]]=cc;
-                    its[cc]=x[i];
+                    m[s[i]]=cc;
+                    dm[cc]=s[i];
                 }
+                parents[m[s[i]]] = j;
             }
         }
-        DSU d(cc+2);
-        for(auto t:accounts)
+        DSU d(cc+1);
+        for(int j=0;j<accounts.size();j++)
         {
-            auto &x=t;
-            for(int i=1;i<x.size()-1;i++)
+            vector<string> s=accounts[j];
+            for(int i=1;i<s.size()-1;i++)
             {
-                int val1=sti[x[i]];
-                int val2=sti[x[i+1]];
-                d.join(val1,val2);
+                int curr1=m[s[i]];
+                int curr2=m[s[i+1]];
+                d.join(curr1,curr2);
             }
         }
-        uv64 adj;
+        map<int,vector<int>> ans;
         for(int i=1;i<=cc;i++)
         {
-            adj[d.find(i)].pb(i);
+            ans[d.find(i)].push_back(i);
         }
-        vector<vector<string>> ans;
-        for(auto t:adj)
+        vector<vector<string>> res;
+        for(auto t:ans)
         {
-            vector<string> temp;
+            vector<string> current;
+            string res1=accounts[parents[t.first]][0];
             for(auto x:t.second)
             {
-                temp.push_back(its[x]);
+                current.push_back(dm[x]);
             }
-            sort(begin(temp),end(temp));
-            reverse(begin(temp),end(temp));
-            temp.push_back(link[its[t.first]]);
-            reverse(begin(temp),end(temp));
-            ans.push_back(temp);
+            sort(begin(current),end(current));
+            reverse(begin(current),end(current));
+            current.push_back(res1);
+            reverse(begin(current),end(current));
+            res.push_back(current);
         }
-        return ans;
+        return res;
     }
 };
