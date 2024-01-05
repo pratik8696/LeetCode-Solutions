@@ -9,7 +9,7 @@ public:
         int ans=0;
         for(auto t:m)
         {
-            ans += (t.second % t.first > 0 ? t.second / t.first + 1: t.second / t.first) * t.first;
+            ans += ((t.second + t.first - 1) / t.first) * t.first;
         }
         return ans;
     }
